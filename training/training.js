@@ -310,7 +310,6 @@ var sound6;
 var token6;
 var sound7;
 var token7;
-var opacity_text;
 var answerClock;
 var answerBox;
 var endBlockClock;
@@ -566,18 +565,6 @@ async function experimentInit() {
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: 1.0,
     depth: -19.0 
-  });
-  
-  opacity_text = new visual.TextStim({
-    win: psychoJS.window,
-    name: 'opacity_text',
-    text: '',
-    font: 'Arial',
-    units: undefined, 
-    pos: [0, (- 0.3)], height: 0.05,  wrapWidth: undefined, ori: 0.0,
-    languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
-    depth: -20.0 
   });
   
   // Initialize components for Routine "answer"
@@ -1262,7 +1249,6 @@ function trialRoutineBegin(snapshot) {
     sound7.setVolume(1.0);
     token7.setOpacity(OPACITY);
     token7.setText(token[7]);
-    opacity_text.setText(("opacity:" + opacity));
     // keep track of which components have finished
     trialComponents = [];
     trialComponents.push(bigCircle);
@@ -1283,7 +1269,6 @@ function trialRoutineBegin(snapshot) {
     trialComponents.push(token6);
     trialComponents.push(sound7);
     trialComponents.push(token7);
-    trialComponents.push(opacity_text);
     
     for (const thisComponent of trialComponents)
       if ('status' in thisComponent)
@@ -1598,20 +1583,6 @@ function trialRoutineEachFrame() {
     frameRemains = 4.475 + 0.35 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (token7.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       token7.setAutoDraw(false);
-    }
-    
-    // *opacity_text* updates
-    if (t >= 0.0 && opacity_text.status === PsychoJS.Status.NOT_STARTED) {
-      // keep track of start time/frame for later
-      opacity_text.tStart = t;  // (not accounting for frame time here)
-      opacity_text.frameNStart = frameN;  // exact frame index
-      
-      opacity_text.setAutoDraw(true);
-    }
-
-    frameRemains = 0.0 + 5 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (opacity_text.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      opacity_text.setAutoDraw(false);
     }
     // Run 'Each Frame' code from makeRoutineEnd
     if ((t > 5)) {

@@ -284,6 +284,7 @@ var rdkAllDots;
 var rdkOpacity;
 var dotSize;
 var SOURCE_START_TIME;
+var bigCircle;
 var token_bg;
 var sound0;
 var token0;
@@ -301,6 +302,7 @@ var sound6;
 var token6;
 var sound7;
 var token7;
+var opacity_text;
 var answerClock;
 var answerBox;
 var endBlockClock;
@@ -383,23 +385,35 @@ async function experimentInit() {
           colorSpace: 'rgb',
           lineColor: new util.Color('white'),
           fillColor: new util.Color('white'),
-          opacity: rdkOpacity, depth: -1.5, interpolate: true,
+          opacity: rdkOpacity, depth: -2.5, interpolate: true,
           });
   }
   
   
   
   SOURCE_START_TIME = [0.55, 1.1, 1.65, 2.2, 2.75, 3.3, 3.85, 4.4];
+  bigCircle = new visual.Polygon({
+    win: psychoJS.window, name: 'bigCircle', 
+    edges: 100, size:[rdkSize, rdkSize],
+    ori: 0.0, pos: [0, 0],
+    anchor: 'center',
+    lineWidth: 1.0, 
+    colorSpace: 'rgb',
+    lineColor: new util.Color('black'),
+    fillColor: new util.Color('black'),
+    opacity: rdkOpacity, depth: -2, interpolate: true,
+  });
+  
   token_bg = new visual.Polygon({
     win: psychoJS.window, name: 'token_bg', 
-    edges: 100, size:[0.15, 0.15],
+    edges: 100, size:[((rdkSize * 1.5) / 20), ((rdkSize * 1.5) / 20)],
     ori: 0.0, pos: [0, 0],
     anchor: 'center',
     lineWidth: 1.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color('gray'),
     fillColor: new util.Color('gray'),
-    opacity: undefined, depth: -2, interpolate: true,
+    opacity: undefined, depth: -3, interpolate: true,
   });
   
   sound0 = new sound.Sound({
@@ -414,10 +428,10 @@ async function experimentInit() {
     text: '',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: rdkSize/20,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: 1.0,
-    depth: -4.0 
+    depth: -5.0 
   });
   
   sound1 = new sound.Sound({
@@ -432,10 +446,10 @@ async function experimentInit() {
     text: '',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: rdkSize/20,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: 1.0,
-    depth: -6.0 
+    depth: -7.0 
   });
   
   sound2 = new sound.Sound({
@@ -450,10 +464,10 @@ async function experimentInit() {
     text: '',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: rdkSize/20,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: 1.0,
-    depth: -8.0 
+    depth: -9.0 
   });
   
   sound3 = new sound.Sound({
@@ -468,10 +482,10 @@ async function experimentInit() {
     text: '',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: rdkSize/20,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: 1.0,
-    depth: -10.0 
+    depth: -11.0 
   });
   
   sound4 = new sound.Sound({
@@ -486,10 +500,10 @@ async function experimentInit() {
     text: '',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: rdkSize/20,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: 1.0,
-    depth: -12.0 
+    depth: -13.0 
   });
   
   sound5 = new sound.Sound({
@@ -504,10 +518,10 @@ async function experimentInit() {
     text: '',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: rdkSize/20,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: 1.0,
-    depth: -14.0 
+    depth: -15.0 
   });
   
   sound6 = new sound.Sound({
@@ -522,10 +536,10 @@ async function experimentInit() {
     text: '',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: rdkSize/20,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: 1.0,
-    depth: -16.0 
+    depth: -17.0 
   });
   
   sound7 = new sound.Sound({
@@ -540,10 +554,22 @@ async function experimentInit() {
     text: '',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: rdkSize/20,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: 1.0,
-    depth: -18.0 
+    depth: -19.0 
+  });
+  
+  opacity_text = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'opacity_text',
+    text: '',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, (- 0.3)], height: 0.05,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -20.0 
   });
   
   // Initialize components for Routine "answer"
@@ -1233,8 +1259,10 @@ function trialRoutineBegin(snapshot) {
     sound7.setVolume(1.0);
     token7.setOpacity(OPACITY);
     token7.setText(token[7]);
+    opacity_text.setText(("opacity:" + opacity));
     // keep track of which components have finished
     trialComponents = [];
+    trialComponents.push(bigCircle);
     trialComponents.push(token_bg);
     trialComponents.push(sound0);
     trialComponents.push(token0);
@@ -1252,6 +1280,7 @@ function trialRoutineBegin(snapshot) {
     trialComponents.push(token6);
     trialComponents.push(sound7);
     trialComponents.push(token7);
+    trialComponents.push(opacity_text);
     
     trialComponents.forEach( function(thisComponent) {
       if ('status' in thisComponent)
@@ -1323,6 +1352,20 @@ function trialRoutineEachFrame() {
             SOURCES[i].start(0);
             SOURCE_STARTED[i] = true;
         }
+    }
+    
+    // *bigCircle* updates
+    if (t >= 0.55 && bigCircle.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      bigCircle.tStart = t;  // (not accounting for frame time here)
+      bigCircle.frameNStart = frameN;  // exact frame index
+      
+      bigCircle.setAutoDraw(true);
+    }
+
+    frameRemains = 5  - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if ((bigCircle.status === PsychoJS.Status.STARTED || bigCircle.status === PsychoJS.Status.FINISHED) && t >= frameRemains) {
+      bigCircle.setAutoDraw(false);
     }
     
     // *token_bg* updates
@@ -1553,6 +1596,20 @@ function trialRoutineEachFrame() {
     frameRemains = 4.475 + 0.35 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
     if (token7.status === PsychoJS.Status.STARTED && t >= frameRemains) {
       token7.setAutoDraw(false);
+    }
+    
+    // *opacity_text* updates
+    if (t >= 0.0 && opacity_text.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      opacity_text.tStart = t;  // (not accounting for frame time here)
+      opacity_text.frameNStart = frameN;  // exact frame index
+      
+      opacity_text.setAutoDraw(true);
+    }
+
+    frameRemains = 0.0 + 5 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
+    if (opacity_text.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      opacity_text.setAutoDraw(false);
     }
     // Run 'Each Frame' code from makeRoutineEnd
     if ((t > 5)) {

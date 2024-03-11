@@ -72,7 +72,7 @@
         <Param val="" valType="extendedCode" updates="constant" name="Before Experiment"/>
         <Param val="function randomDotInCircle(_diameter) {&amp;#10;    const _angle = Math.random()*2*pi;&amp;#10;    const _length = (_diameter/2)*sqrt(Math.random());&amp;#10;    const _xPos = _length*cos(_angle);&amp;#10;    const _yPos = _length*sin(_angle);&amp;#10;    return [_xPos, _yPos];&amp;#10;}&amp;#10;&amp;#10;function selectNewDirection(_oldPos, _direction, _speed) {&amp;#10;    if(_direction == 'R') {&amp;#10;        return [_oldPos[0]+_speed, _oldPos[1]];&amp;#10;    }&amp;#10;    else if(_direction == 'L') {&amp;#10;        return [_oldPos[0]-_speed, _oldPos[1]];&amp;#10;    }&amp;#10;    const _angle = Math.random()*2*pi;&amp;#10;    return [_oldPos[0]+(_speed*cos(_angle)), _oldPos[1]+(_speed*sin(_angle))];&amp;#10;}" valType="extendedCode" updates="constant" name="Before JS Experiment"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Experiment"/>
-        <Param val="heightCM = parseFloat(expInfo['screenHeightCM'])           &amp;#10;distanceCM = parseFloat(expInfo['viewingDistanceCM'])           &amp;#10;const rad2deg = rad =&gt; (rad * 180.0) / Math.PI;&amp;#10;degHeight = rad2deg(Math.atan2(.5 * heightCM, distanceCM)) / (.5)&amp;#10;maxRDKSize = parseFloat(expInfo['maxRDKSize'])&amp;#10;rdkStartTime = [0.55, 1.1, 1.65, 2.2, 2.75, 3.3, 3.85, 4.4];&amp;#10;rdkDuration = 0.5;&amp;#10;rdkSize = 20/degHeight &lt;= maxRDKSize ? 20/degHeight : maxRDKSize;&amp;#10;rdkDotCount = 200;&amp;#10;&amp;#10;rdkAllDots = [];&amp;#10;&amp;#10;rdkOpacity = 1;&amp;#10;&amp;#10;if(enableRDK !== 'yes') {&amp;#10;    rdkOpacity = 0;&amp;#10;}&amp;#10;&amp;#10;dotSize = 20/degHeight &lt;=maxRDKSize ? 0.1/degHeight : (0.1/degHeight)*maxRDKSize/(20/degHeight)&amp;#10;for(let i=0; i&lt;rdkDotCount; i++) {&amp;#10;    rdkAllDots[i] = new visual.Polygon({&amp;#10;        win: psychoJS.window, name: 'polygon', unit:'height',&amp;#10;        edges: 256, size:[dotSize,dotSize],&amp;#10;        ori: 0.0, pos: [0, 0],&amp;#10;        anchor: 'center',&amp;#10;        lineWidth: 0.0, &amp;#10;        colorSpace: 'rgb',&amp;#10;        lineColor: new util.Color('white'),&amp;#10;        fillColor: new util.Color('white'),&amp;#10;        opacity: rdkOpacity, depth: -1.5, interpolate: true,&amp;#10;        });&amp;#10;}&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
+        <Param val="heightCM = parseFloat(expInfo['screenHeightCM'])           &amp;#10;distanceCM = parseFloat(expInfo['viewingDistanceCM'])           &amp;#10;const rad2deg = rad =&gt; (rad * 180.0) / Math.PI;&amp;#10;degHeight = rad2deg(Math.atan2(.5 * heightCM, distanceCM)) / (.5)&amp;#10;maxRDKSize = parseFloat(expInfo['maxRDKSize'])&amp;#10;rdkStartTime = [0.55, 1.1, 1.65, 2.2, 2.75, 3.3, 3.85, 4.4];&amp;#10;rdkDuration = 0.5;&amp;#10;rdkSize = 20/degHeight &lt;= maxRDKSize ? 20/degHeight : maxRDKSize;&amp;#10;rdkDotCount = 200;&amp;#10;&amp;#10;rdkAllDots = [];&amp;#10;&amp;#10;rdkOpacity = 1;&amp;#10;&amp;#10;if(enableRDK !== 'yes') {&amp;#10;    rdkOpacity = 0;&amp;#10;}&amp;#10;&amp;#10;dotSize = 20/degHeight &lt;=maxRDKSize ? 0.1/degHeight : (0.1/degHeight)*maxRDKSize/(20/degHeight)&amp;#10;for(let i=0; i&lt;rdkDotCount; i++) {&amp;#10;    rdkAllDots[i] = new visual.Polygon({&amp;#10;        win: psychoJS.window, name: 'polygon', unit:'height',&amp;#10;        edges: 256, size:[dotSize,dotSize],&amp;#10;        ori: 0.0, pos: [0, 0],&amp;#10;        anchor: 'center',&amp;#10;        lineWidth: 0.0, &amp;#10;        colorSpace: 'rgb',&amp;#10;        lineColor: new util.Color('white'),&amp;#10;        fillColor: new util.Color('white'),&amp;#10;        opacity: rdkOpacity, depth: -2.5, interpolate: true,&amp;#10;        });&amp;#10;}&amp;#10;&amp;#10;&amp;#10;" valType="extendedCode" updates="constant" name="Begin JS Experiment"/>
         <Param val="//rdkLifeTime = 4;&amp;#10;//rdkSpeed = 0.01;&amp;#10;//rdkCoherence = 1;&amp;#10;//rdkDir = ['L', 'R', '_', 'L', 'R', '_', '_', '_'];&amp;#10;&amp;#10;rdkIndex = 0;&amp;#10;rdkStatus = PsychoJS.Status.NOT_STARTED;&amp;#10;&amp;#10;rdkNoise = [];&amp;#10;rdkSignal = [];&amp;#10;&amp;#10;REALRDKSPEED = 20/degHeight &lt;=maxRDKSize ? (rdkSpeed * psychoJS.window.monitorFramePeriod)/degHeight : ((rdkSpeed * psychoJS.window.monitorFramePeriod)/degHeight)*maxRDKSize/(20/degHeight)&amp;#10;&amp;#10;signalCount = round(rdkDotCount*rdkCoherence);&amp;#10;for(let i=0; i&lt;signalCount; i++) {&amp;#10;    rdkSignal[i] = rdkAllDots[i];&amp;#10;}&amp;#10;&amp;#10;for(let i=signalCount; i&lt;rdkDotCount; i++) {&amp;#10;    rdkNoise[i-signalCount] = rdkAllDots[i];&amp;#10;}" valType="extendedCode" updates="constant" name="Begin JS Routine"/>
         <Param val="" valType="extendedCode" updates="constant" name="Begin Routine"/>
         <Param val="JS" valType="str" updates="None" name="Code Type"/>
@@ -106,7 +106,7 @@
         <Param val="center" valType="str" updates="constant" name="anchor"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
-        <Param val="True" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="black" valType="color" updates="constant" name="fillColor"/>
         <Param val="linear" valType="str" updates="constant" name="interpolate"/>
@@ -119,7 +119,7 @@
         <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="True" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.9, 0.9)" valType="list" updates="constant" name="size"/>
+        <Param val="(rdkSize, rdkSize)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.55" valType="code" updates="None" name="startVal"/>
@@ -146,7 +146,7 @@
         <Param val="(0, 0)" valType="list" updates="constant" name="pos"/>
         <Param val="False" valType="bool" updates="None" name="saveStartStop"/>
         <Param val="circle" valType="str" updates="None" name="shape"/>
-        <Param val="(0.15, 0.15)" valType="list" updates="constant" name="size"/>
+        <Param val="(rdkSize*1.5/20, rdkSize*1.5/20)" valType="list" updates="constant" name="size"/>
         <Param val="" valType="code" updates="None" name="startEstim"/>
         <Param val="time (s)" valType="str" updates="None" name="startType"/>
         <Param val="0.55" valType="code" updates="None" name="startVal"/>
@@ -195,7 +195,7 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="rdkSize/20" valType="num" updates="constant" name="letterHeight"/>
         <Param val="token0" valType="code" updates="None" name="name"/>
         <Param val="OPACITY" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
@@ -235,7 +235,7 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="rdkSize/20" valType="num" updates="constant" name="letterHeight"/>
         <Param val="token1" valType="code" updates="None" name="name"/>
         <Param val="OPACITY" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
@@ -275,7 +275,7 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="rdkSize/20" valType="num" updates="constant" name="letterHeight"/>
         <Param val="token2" valType="code" updates="None" name="name"/>
         <Param val="OPACITY" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
@@ -315,7 +315,7 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="rdkSize/20" valType="num" updates="constant" name="letterHeight"/>
         <Param val="token3" valType="code" updates="None" name="name"/>
         <Param val="OPACITY" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
@@ -355,7 +355,7 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="rdkSize/20" valType="num" updates="constant" name="letterHeight"/>
         <Param val="token4" valType="code" updates="None" name="name"/>
         <Param val="OPACITY" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
@@ -395,7 +395,7 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="rdkSize/20" valType="num" updates="constant" name="letterHeight"/>
         <Param val="token5" valType="code" updates="None" name="name"/>
         <Param val="OPACITY" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
@@ -435,7 +435,7 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="rdkSize/20" valType="num" updates="constant" name="letterHeight"/>
         <Param val="token6" valType="code" updates="None" name="name"/>
         <Param val="OPACITY" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
@@ -475,7 +475,7 @@
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>
         <Param val="LTR" valType="str" updates="None" name="languageStyle"/>
-        <Param val="0.1" valType="num" updates="constant" name="letterHeight"/>
+        <Param val="rdkSize/20" valType="num" updates="constant" name="letterHeight"/>
         <Param val="token7" valType="code" updates="None" name="name"/>
         <Param val="OPACITY" valType="num" updates="set every repeat" name="opacity"/>
         <Param val="0" valType="num" updates="constant" name="ori"/>
@@ -520,7 +520,7 @@
         <Param val="white" valType="color" updates="constant" name="color"/>
         <Param val="rgb" valType="str" updates="constant" name="colorSpace"/>
         <Param val="1" valType="num" updates="constant" name="contrast"/>
-        <Param val="True" valType="bool" updates="None" name="disabled"/>
+        <Param val="False" valType="bool" updates="None" name="disabled"/>
         <Param val="" valType="code" updates="None" name="durationEstim"/>
         <Param val="None" valType="str" updates="constant" name="flip"/>
         <Param val="Arial" valType="str" updates="constant" name="font"/>

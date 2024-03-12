@@ -10,9 +10,7 @@ let expInfo = {
     'session': '001',
     'tokenAudio/Visual': 'no/yes',
     'distractorsSetting': 'aco-no-up/rdk-yes-L',
-    'screenHeightCM': '17.5',
-    'viewingDistanceCM': '30',
-    'maxRDKSize': '.6',
+    'scnHeightCM-vDistance-maxRDKSize': '17.5-30-0.6',
 };
 
 // Start code blocks for 'Before Experiment'
@@ -272,6 +270,7 @@ var rdkSetting;
 var enableRDK;
 var rdkTargetMatch;
 var trialClock;
+var screenConfigs;
 var heightCM;
 var distanceCM;
 var degHeight;
@@ -355,11 +354,13 @@ async function experimentInit() {
   
   // Initialize components for Routine "trial"
   trialClock = new util.Clock();
-  heightCM = parseFloat(expInfo['screenHeightCM'])           
-  distanceCM = parseFloat(expInfo['viewingDistanceCM'])           
+  screenConfigs = expInfo['scnHeightCM-vDistance-maxRDKSize'].split('-');
+  
+  heightCM = parseFloat(screenConfigs[0])           
+  distanceCM = parseFloat(screenConfigs[1])           
   const rad2deg = rad => (rad * 180.0) / Math.PI;
   degHeight = rad2deg(Math.atan2(.5 * heightCM, distanceCM)) / (.5)
-  maxRDKSize = parseFloat(expInfo['maxRDKSize'])
+  maxRDKSize = parseFloat(screenConfigs[2])
   rdkStartTime = [0.55, 1.1, 1.65, 2.2, 2.75, 3.3, 3.85, 4.4];
   rdkDuration = 0.5;
   rdkSize = 20/degHeight <= maxRDKSize ? 20/degHeight : maxRDKSize;

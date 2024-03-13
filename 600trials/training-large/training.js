@@ -18,7 +18,7 @@ let expInfo = {
     'session': '001',
     'tokenAudio/Visual': 'no/yes',
     'distractorsSetting': 'aco-no-up/rdk-yes-L',
-    'scnHeightCM-vDistance-maxRDKSize': '17.5-30-0.6',
+    'scnHeightCM-vDistance-maxRDKSize': '17.5-75-0.8',
 };
 
 // Start code blocks for 'Before Experiment'
@@ -382,11 +382,11 @@ async function experimentInit() {
       rdkOpacity = 0;
   }
   
-  dotSize = 20/degHeight <=maxRDKSize ? 0.1/degHeight : (0.1/degHeight)*maxRDKSize/(20/degHeight)
+  dotSize = 20/degHeight <=maxRDKSize ? 0.2/degHeight : (0.2/degHeight)*maxRDKSize/(20/degHeight)
   for(let i=0; i<rdkDotCount; i++) {
       rdkAllDots[i] = new visual.Polygon({
           win: psychoJS.window, name: 'polygon', unit:'height',
-          edges: 256, size:[dotSize,dotSize],
+          edges: 512, size:[dotSize,dotSize],
           ori: 0.0, pos: [0, 0],
           anchor: 'center',
           lineWidth: 0.0, 
@@ -397,7 +397,7 @@ async function experimentInit() {
           });
   }
   
-  
+  document.body.style.cursor='none';
   
   SOURCE_START_TIME = [0.55, 1.1, 1.65, 2.2, 2.75, 3.3, 3.85, 4.4];
   bigCircle = new visual.Polygon({

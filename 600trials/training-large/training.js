@@ -14,11 +14,11 @@ const { round } = util;
 // store info about the experiment session:
 let expName = 'training';  // from the Builder filename that created this script
 let expInfo = {
-    'participant': `${util.pad(Number.parseFloat(util.randint(0, 999999)).toFixed(0), 6)}`,
-    'session': '001',
-    'tokenAudio/Visual': 'no/yes',
-    'distractorsSetting': 'aco-no-up/rdk-yes-L',
-    'scnHeightCM-vDistance-maxRDKSize': '17.5-75-0.8',
+    'participant': 'Enter Value',
+    'session': 'Enter Value',
+    'tokenAudio/Visual': 'Enter Value',
+    'distractorsSetting': 'Enter Value',
+    'scnHeightCM-vDistance-maxRDKSize': 'Enter Value',
 };
 
 // Start code blocks for 'Before Experiment'

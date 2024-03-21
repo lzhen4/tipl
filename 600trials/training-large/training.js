@@ -599,7 +599,7 @@ async function experimentInit() {
   endBlockText = new visual.TextStim({
     win: psychoJS.window,
     name: 'endBlockText',
-    text: 'This is the end of a block. \n\nPress SPACE to continue.',
+    text: '',
     font: 'Open Sans',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -1799,6 +1799,7 @@ function endBlockRoutineBegin(snapshot) {
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
+    endBlockText.setText((((("This is the end of block " + (blocks.thisN + 1).toString()) + " of ") + blocks.nTotal.toString()) + "\n\nPress SPACE to continue."));
     key_resp_3.keys = undefined;
     key_resp_3.rt = undefined;
     _key_resp_3_allKeys = [];
@@ -2035,6 +2036,8 @@ async function quitPsychoJS(message, isCompleted) {
     psychoJS.experiment.nextEntry();
   }
   
+  document.body.style.cursor='auto';
+  document.exitFullscreen();
   
   
   

@@ -229,7 +229,7 @@ psychoJS.start({
   ]
 });
 
-psychoJS.experimentLogger.setLevel(core.Logger.ServerLevel.EXP);
+psychoJS.experimentLogger.setLevel(core.Logger.ServerLevel.ERROR);
 
 
 var currentLoop;
@@ -1803,6 +1803,9 @@ function endBlockRoutineBegin(snapshot) {
     key_resp_3.keys = undefined;
     key_resp_3.rt = undefined;
     _key_resp_3_allKeys = [];
+    // Run 'Begin Routine' code from save
+    psychoJS.experiment.save();
+    
     // keep track of which components have finished
     endBlockComponents = [];
     endBlockComponents.push(endBlockText);
@@ -2038,6 +2041,8 @@ async function quitPsychoJS(message, isCompleted) {
   
   document.body.style.cursor='auto';
   document.exitFullscreen();
+  
+  
   
   
   

@@ -961,7 +961,8 @@ var _pj;
 var beeps;
 var BEEPDIRTARGET;
 var BEEPDIRNONTARGET;
-var beepDir;
+var beepDirList;
+var beepNonTargetIndex;
 var beep;
 var rdkDir;
 var RDKSIGNALDIR;
@@ -1050,15 +1051,23 @@ function prepareRoutineBegin(snapshot) {
         BEEPDIRTARGET = (- 1);
         BEEPDIRNONTARGET = 1;
     }
-    beepDir = BEEPDIRNONTARGET;
-    beep = [];
-    for (var tok, _pj_c = 0, _pj_a = token, _pj_b = _pj_a.length; (_pj_c < _pj_b); _pj_c += 1) {
-        tok = _pj_a[_pj_c];
-        if (_pj.in_es6(tok, targets)) {
-            beepDir = BEEPDIRTARGET;
+    beepDirList = [];
+    beepNonTargetIndex = [];
+    for (var i, _pj_c = 0, _pj_a = util.range(token.length), _pj_b = _pj_a.length; (_pj_c < _pj_b); _pj_c += 1) {
+        i = _pj_a[_pj_c];
+        if (_pj.in_es6(token[i], targets)) {
+            beepDirList.push(BEEPDIRTARGET);
         } else {
-            beepDir = BEEPDIRNONTARGET;
+            beepDirList.push(0);
+            beepNonTargetIndex.push(i);
         }
+    }
+    util.shuffle(beepNonTargetIndex);
+    beepDirList[beepNonTargetIndex[0]] = BEEPDIRNONTARGET;
+    beepDirList[beepNonTargetIndex[1]] = BEEPDIRNONTARGET;
+    beep = null;
+    for (var beepDir, _pj_c = 0, _pj_a = beepDirList, _pj_b = _pj_a.length; (_pj_c < _pj_b); _pj_c += 1) {
+        beepDir = _pj_a[_pj_c];
         beep = generateAuditorySequence(nbins, initialFrequency, (deltaGauss * beepDir), toneDuration, interToneInterval, 48000, rampSize, stdevTone);
         beeps.push(beep);
     }
